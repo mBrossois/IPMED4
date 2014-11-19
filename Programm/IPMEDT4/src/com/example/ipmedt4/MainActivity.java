@@ -1,4 +1,4 @@
-package com.example.troep;
+package com.example.ipmedt4;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
