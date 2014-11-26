@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.example.ipmedt4;
 
 import android.support.v7.app.ActionBarActivity;
@@ -34,3 +35,5 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+=======
+>>>>>>> origin/Test2
