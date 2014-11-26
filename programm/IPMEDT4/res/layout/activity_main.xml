@@ -11,6 +11,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mark is dom en gek" />
+        android:text="mark is dom" />
 
 </RelativeLayout>
