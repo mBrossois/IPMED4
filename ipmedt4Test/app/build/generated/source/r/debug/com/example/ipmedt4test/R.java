@@ -1321,6 +1321,9 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
         public static final int beginning=0x7f080013;
+        public static final int button=0x7f080043;
+        public static final int button2=0x7f080044;
+        public static final int checkBox=0x7f080045;
         public static final int checkbox=0x7f080029;
         public static final int collapseActionView=0x7f080017;
         public static final int container=0x7f080040;
@@ -1367,7 +1370,9 @@ containing a value of this type.
         public static final int split_action_bar=0x7f080007;
         public static final int submit_area=0x7f08003c;
         public static final int tabMode=0x7f08000b;
-        public static final int textView1=0x7f080043;
+        public static final int textView=0x7f080046;
+        public static final int textView1=0x7f080048;
+        public static final int textView2=0x7f080047;
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;
