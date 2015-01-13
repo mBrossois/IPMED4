@@ -88,6 +88,28 @@ public class MainActivity extends ActionBarActivity
                 .replace(R.id.container, objFragment)
                 .commit();
     }
+
+    public void goPollenkaart(View view)
+    {
+        Fragment objFragment = new menu3_Fragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, objFragment)
+                .commit();
+        mTitle ="Pollenkaart";
+        restoreActionBar();
+    }
+
+    public void goKlachtmelden (View view)
+    {
+        Fragment objFragment = new menu2_Fragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, objFragment)
+                .commit();
+        mTitle ="Klachten melden";
+        restoreActionBar();    }
+
     public void sendMessage(View view){
         //Do something in response to the button
 
@@ -122,7 +144,7 @@ public class MainActivity extends ActionBarActivity
         RatingBar rating = (RatingBar) findViewById(R.id.ratingBar);
         rating.getRating();
         String message = "";
-        message.setText(rating);
+        //message.setText(rating);
         return message;
     }
     public String getMessage()

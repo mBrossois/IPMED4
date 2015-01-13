@@ -2,6 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal" >
+    android:gravity="center_horizontal"
+    android:id="@+id/home">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goPollenkaart"
+        android:text="Pollenkaart"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="132dp"
+        android:layout_alignRight="@+id/button2"
+        android:layout_alignEnd="@+id/button2"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:minWidth="500dp"
+        android:background="#ff1268ff"
+        android:textColor="#ffffffff" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goKlachtmelden"
+        android:text="Klacht melden"
+        android:id="@+id/button2"
+        android:layout_alignTop="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:background="#ff1268ff"
+        android:textColor="#ffffffff" />
 </RelativeLayout>
