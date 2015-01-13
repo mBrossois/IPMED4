@@ -1303,6 +1303,7 @@ containing a value of this type.
         public static final int drawer_shadow=0x7f020033;
         public static final int ic_drawer=0x7f020034;
         public static final int ic_launcher=0x7f020035;
+        public static final int next_icon=0x7f020036;
     }
     public static final class id {
         public static final int action_bar=0x7f080031;
@@ -1321,9 +1322,9 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
         public static final int beginning=0x7f080013;
-        public static final int button=0x7f080043;
-        public static final int button2=0x7f080044;
-        public static final int checkBox=0x7f080045;
+        public static final int checkBox1=0x7f080046;
+        public static final int checkBox2=0x7f080045;
+        public static final int checkBox3=0x7f080044;
         public static final int checkbox=0x7f080029;
         public static final int collapseActionView=0x7f080017;
         public static final int container=0x7f080040;
@@ -1333,6 +1334,7 @@ containing a value of this type.
         public static final int disableHome=0x7f08000c;
         public static final int drawer_layout=0x7f08003f;
         public static final int dropdown=0x7f08001c;
+        public static final int editTekst=0x7f080049;
         public static final int edit_query=0x7f080033;
         public static final int end=0x7f080014;
         public static final int expand_activities_button=0x7f080022;
@@ -1342,6 +1344,7 @@ containing a value of this type.
         public static final int icon=0x7f080026;
         public static final int ifRoom=0x7f080018;
         public static final int image=0x7f080023;
+        public static final int imageButton=0x7f08004b;
         public static final int listMode=0x7f080009;
         public static final int list_item=0x7f080025;
         public static final int middle=0x7f080015;
@@ -1352,6 +1355,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f080005;
         public static final int progress_horizontal=0x7f080006;
         public static final int radio=0x7f08002b;
+        public static final int ratingBar=0x7f080048;
         public static final int search_badge=0x7f080035;
         public static final int search_bar=0x7f080034;
         public static final int search_button=0x7f080036;
@@ -1370,9 +1374,10 @@ containing a value of this type.
         public static final int split_action_bar=0x7f080007;
         public static final int submit_area=0x7f08003c;
         public static final int tabMode=0x7f08000b;
-        public static final int textView=0x7f080046;
-        public static final int textView1=0x7f080048;
-        public static final int textView2=0x7f080047;
+        public static final int textView=0x7f080047;
+        public static final int textView1=0x7f08004c;
+        public static final int textView2=0x7f080043;
+        public static final int textView3=0x7f08004a;
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;
@@ -1411,10 +1416,11 @@ containing a value of this type.
         public static final int fragment_navigation_drawer=0x7f030019;
         public static final int menu1_layout=0x7f03001a;
         public static final int menu2_layout=0x7f03001b;
-        public static final int menu3_layout=0x7f03001c;
-        public static final int menu4_layout=0x7f03001d;
-        public static final int menu5_layout=0x7f03001e;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int menu2b_layout=0x7f03001c;
+        public static final int menu3_layout=0x7f03001d;
+        public static final int menu4_layout=0x7f03001e;
+        public static final int menu5_layout=0x7f03001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f030020;
     }
     public static final class menu {
         public static final int global=0x7f0c0000;

@@ -1,6 +1,7 @@
 package com.example.ipmedt4test;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,11 +13,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-
+    CheckBox neus, keel, ogen;
+    ImageButton verderKlacht;
+    RatingBar gevoel;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -35,6 +44,10 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
+
+        // Add button listener
+
+        //addListenerOnButtonClick();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -66,6 +79,7 @@ public class MainActivity extends ActionBarActivity
 
     		
     	}
+
     	
         // update the main content by replacing fragments
     	onSectionAttached(position + 1);
@@ -74,6 +88,51 @@ public class MainActivity extends ActionBarActivity
                 .replace(R.id.container, objFragment)
                 .commit();
     }
+    public void sendMessage(View view){
+        //Do something in response to the button
+
+        neus=(CheckBox)findViewById(R.id.checkBox3);
+        ogen=(CheckBox)findViewById(R.id.checkBox2);
+        keel=(CheckBox)findViewById(R.id.checkBox1);
+        gevoel = (RatingBar)findViewById(R.id.ratingBar);
+
+       Fragment objFragment = new menu2B_Fragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, objFragment)
+                .commit();
+
+        StringBuilder result=new StringBuilder();
+        result.append("Selected Items:");
+        result.append("\n" + getMessage() + "\n" + getRating());
+        if(keel.isChecked()){
+            result.append("\n keel");
+        }
+        if(ogen.isChecked()){
+            result.append("\n Ogen");
+        }
+        if(neus.isChecked()){
+            result.append("\n Neus");
+        }
+        //Displaying the message on the toast
+        Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
+    }
+    public String getRating()
+    {
+        RatingBar rating = (RatingBar) findViewById(R.id.ratingBar);
+        rating.getRating();
+        String message = "";
+        message.setText(rating);
+        return message;
+    }
+    public String getMessage()
+    {
+        //Puts the message from the input field in the string
+        EditText editText = (EditText) findViewById(R.id.editTekst);
+        String message = editText.getText().toString();
+        return message;
+    }
+
 
     public void onSectionAttached(int number) {
         switch (number) {
@@ -92,8 +151,8 @@ public class MainActivity extends ActionBarActivity
             case 5:
                 mTitle = getString(R.string.title_section5);
                 break;
-      
-           
+
+
         }
     }
 
