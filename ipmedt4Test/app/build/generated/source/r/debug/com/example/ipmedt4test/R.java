@@ -1328,6 +1328,9 @@ containing a value of this type.
         public static final int checkBox1=0x7f080049;
         public static final int checkBox2=0x7f080048;
         public static final int checkBox3=0x7f080047;
+        public static final int checkBox4=0x7f080050;
+        public static final int checkBox5=0x7f080051;
+        public static final int checkBox6=0x7f080052;
         public static final int checkbox=0x7f080029;
         public static final int collapseActionView=0x7f080017;
         public static final int container=0x7f080040;
@@ -1348,6 +1351,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f080018;
         public static final int image=0x7f080023;
         public static final int imageButton=0x7f08004e;
+        public static final int imageButton2=0x7f080054;
         public static final int listMode=0x7f080009;
         public static final int list_item=0x7f080025;
         public static final int middle=0x7f080015;
@@ -1378,9 +1382,11 @@ containing a value of this type.
         public static final int submit_area=0x7f08003c;
         public static final int tabMode=0x7f08000b;
         public static final int textView=0x7f08004a;
-        public static final int textView1=0x7f08004f;
+        public static final int textView1=0x7f080055;
         public static final int textView2=0x7f080046;
         public static final int textView3=0x7f08004d;
+        public static final int textView4=0x7f08004f;
+        public static final int textView5=0x7f080053;
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;

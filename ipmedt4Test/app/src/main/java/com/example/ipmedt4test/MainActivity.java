@@ -88,14 +88,10 @@ public class MainActivity extends ActionBarActivity
                 .replace(R.id.container, objFragment)
                 .commit();
     }
-
     public void goPollenkaart(View view)
     {
         Fragment objFragment = new menu3_Fragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
-                .commit();
+        switchFragment(objFragment);
         mTitle ="Pollenkaart";
         restoreActionBar();
     }
@@ -103,26 +99,18 @@ public class MainActivity extends ActionBarActivity
     public void goKlachtmelden (View view)
     {
         Fragment objFragment = new menu2_Fragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
-                .commit();
+        switchFragment(objFragment);
         mTitle ="Klachten melden";
         restoreActionBar();    }
 
     public void sendMessage(View view){
         //Do something in response to the button
-
+        Fragment objFragment = new menu2B_Fragment();
+        switchFragment(objFragment);
         neus=(CheckBox)findViewById(R.id.checkBox3);
         ogen=(CheckBox)findViewById(R.id.checkBox2);
         keel=(CheckBox)findViewById(R.id.checkBox1);
         gevoel = (RatingBar)findViewById(R.id.ratingBar);
-
-       Fragment objFragment = new menu2B_Fragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
-                .commit();
 
         StringBuilder result=new StringBuilder();
         result.append("Selected Items:");
@@ -138,13 +126,39 @@ public class MainActivity extends ActionBarActivity
         }
         //Displaying the message on the toast
         Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
+        mTitle = "Medicijn melden";
+        restoreActionBar();
+    }
+    public void verzendenKlachten(View view)
+    {
+        Fragment objFragment = new menu1_Fragment();
+        switchFragment(objFragment);
+        mTitle = "Home";
+        restoreActionBar();
+    }
+    public void switchKlachten(View view)
+    {
+        Fragment objFragment = new menu2_Fragment();
+        switchFragment(objFragment);
+        mTitle = "Klachten melden";
+        restoreActionBar();
+    }
+    public void switchFragment(Fragment objFragment)
+    {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, objFragment)
+                .commit();
+
     }
     public String getRating()
     {
+        //Puts the value off the rating bar in a string
         RatingBar rating = (RatingBar) findViewById(R.id.ratingBar);
-        rating.getRating();
         String message = "";
-        //message.setText(rating);
+        float theRating = rating.getRating();
+        theRating *= 2;
+        message = Float.toString(theRating);
         return message;
     }
     public String getMessage()
