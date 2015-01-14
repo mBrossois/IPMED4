@@ -138,15 +138,13 @@ public class MainActivity extends ActionBarActivity
         }
         //Displaying the message on the toast
         Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
-        mTitle = "Medicijn melden";
-        restoreActionBar();
     }
     public String getRating()
     {
         RatingBar rating = (RatingBar) findViewById(R.id.ratingBar);
         rating.getRating();
         String message = "";
-       // message = rating;
+        //message.setText(rating);
         return message;
     }
     public String getMessage()
