@@ -10,5 +10,13 @@
     <string name="action_settings">Settings</string>
     <string name="title_section4">Persoons gegevens</string>
     <string name="title_section5">Informatie</string>
+    <string name="info"><b>Bedankt voor het gebruiken van deze app!
+        Samen gaan we de strijd tegen pollenallergien aan.</b></string>
+    <string name="tekst">
+        Deze app is tot stand gekomen door een samenwerking van Hogeschool Leiden en Generade.
+        Generade ontwikkelt nieuwe kennis en technologie op het gebied van genomics.
+        Bedrijven met vraagstukken op het snijvlak van biodiversiteit en gezondheid kunnen bij Generade terecht.
+        Generade is een samenwerkingsinitiatief van Biotechnologiebedrijf BaseClear, Hogeschool Leiden,
+        het Leids Universitair Medisch Centrum (LUMC), Naturalis Biodiversity Center en de Universiteit Leiden.</string>
 
 </resources>
