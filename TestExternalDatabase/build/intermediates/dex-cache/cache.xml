@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-136693571d778bc1cf38c6d3b8dba9f7ef1d0e13.jar" />
+    </item>
+    <item
+        jar="/Applications/Eclipse-SDK/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-ef15597d29349612fc7e582b7a46148666b25124.jar" />
+    </item>
+    <item
+        jar="/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/pre-dexed/debug/classes-b734d57617d9baa554949efa44fa9af0f3c41fbf.jar" />
+    </item>
+    <item
+        jar="/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/pre-dexed/debug/classes-d148394951301bfae5b7afe9406aaaa89fb8d3a2.jar" />
+    </item>
+
+</items>

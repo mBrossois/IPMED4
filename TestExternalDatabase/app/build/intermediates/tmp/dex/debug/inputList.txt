@@ -1,0 +1,5 @@
+/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/classes/debug
+/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-ef15597d29349612fc7e582b7a46148666b25124.jar
+/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-136693571d778bc1cf38c6d3b8dba9f7ef1d0e13.jar
+/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/pre-dexed/debug/classes-b734d57617d9baa554949efa44fa9af0f3c41fbf.jar
+/Users/angelinevangasteren/Documents/School/IMTPMD/TestExternalDatabase/app/build/intermediates/pre-dexed/debug/classes-d148394951301bfae5b7afe9406aaaa89fb8d3a2.jar
