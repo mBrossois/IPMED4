@@ -1,6 +1,5 @@
-C:\Users\mark\AndroidstudioProjects\ipmedt4Test\app\build\intermediates\classes\debug
-C:\Users\mark\AndroidstudioProjects\ipmedt4Test\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b1ea607b1fc1d2e48f6f812bd563c418cbb68b78.jar
-C:\Users\mark\AndroidstudioProjects\ipmedt4Test\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-d1aae0def59ed35d7ae58e94f7a4b4925e6ccbde.jar
-C:\Users\mark\AndroidstudioProjects\ipmedt4Test\app\build\intermediates\pre-dexed\debug\classes-8ba68d33ffe5ca433f404c1516a31eca3749abf6.jar
-C:\Users\mark\AndroidstudioProjects\ipmedt4Test\app\build\intermediates\pre-dexed\debug\classes-4b6b1f3d27cce64b640aaa7586a2510ba16c9146.jar
-C:\Users\mark\AndroidstudioProjects\ipmedt4Test\app\build\intermediates\pre-dexed\debug\classes-4068114c395155365f02797a618eed90cad8fea0.jar
+C:\Users\Giovsn\Desktop\ipmedt4Test\app\build\intermediates\classes\debug
+C:\Users\Giovsn\Desktop\ipmedt4Test\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-26c48018a760e6778b2916b0cbf49d9f26d87ba8.jar
+C:\Users\Giovsn\Desktop\ipmedt4Test\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-f8ada32c70d2b3fa95d36b3a88a73485389b7277.jar
+C:\Users\Giovsn\Desktop\ipmedt4Test\app\build\intermediates\pre-dexed\debug\classes-03c1bced81addc29e48a8512907d620555e3b497.jar
+C:\Users\Giovsn\Desktop\ipmedt4Test\app\build\intermediates\pre-dexed\debug\classes-ff04ec8717d20535c8faf7df28cc0174a6364e36.jar
