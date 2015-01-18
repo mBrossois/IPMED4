@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#ffffffff">
 
     <ImageView
         android:layout_width="271dp"
@@ -26,4 +27,4 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.13" />
 
-</LinearLayout><!-- From: file:/C:/Users/Giovsn/Desktop/ipmedt4Test/app/src/main/res/layout/activity_splash.xml -->
+</LinearLayout><!-- From: file:/C:/Users/mark/AndroidstudioProjects/ipmedt4Test/app/src/main/res/layout/activity_splash.xml -->
