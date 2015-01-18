@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Giovsn/Desktop/ipmedt4Test/app/src/main/res/values-v14/styles.xml -->
+    <!-- From: file:/C:/Users/mark/AndroidstudioProjects/ipmedt4Test/app/src/main/res/values-v14/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--<item name="android:background">#712</item>-->
@@ -8,7 +8,7 @@
         <!-- API 14 theme customizations can go here. -->
         <!--<item name="android:actionBarItemBackground">#712</item>-->
     </style>
-    <!-- From: file:/C:/Users/Giovsn/Desktop/ipmedt4Test/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml -->
+    <!-- From: file:/C:/Users/mark/AndroidstudioProjects/ipmedt4Test/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v14/values.xml -->
     <eat-comment/>
     <style name="Base.Theme.AppCompat" parent="Base.V14.Theme.AppCompat">
         <item name="android:actionModeCutDrawable">?actionModeCutDrawable</item>
@@ -42,7 +42,7 @@
     <style name="Base.V14.Theme.AppCompat.Dialog" parent="Base.V11.Theme.AppCompat.Dialog"/>
     <style name="Base.V14.Theme.AppCompat.Light" parent="Base.V11.Theme.AppCompat.Light"/>
     <style name="Base.V14.Theme.AppCompat.Light.Dialog" parent="Base.V11.Theme.AppCompat.Light.Dialog"/>
-    <!-- From: file:/C:/Users/Giovsn/Desktop/ipmedt4Test/app/src/main/res/values-v14/styles.xml -->
+    <!-- From: file:/C:/Users/mark/AndroidstudioProjects/ipmedt4Test/app/src/main/res/values-v14/styles.xml -->
     <eat-comment/>
     <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">#712</item>

@@ -1,8 +1,10 @@
 package com.example.ipmedt4test;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -20,12 +22,28 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.MapFragment;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.HttpConnectionParams;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-    CheckBox neus, keel, ogen;
-    ImageButton verderKlacht;
-    RatingBar gevoel;
+    String bNeus = "0", bKeel = "0", bOgen = "0", bSpray = "0", bPil = "0", bNiets =  "0", bAnders = "0", rate, datum = "", opmerking = "";
+
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -48,7 +66,7 @@ public class MainActivity extends ActionBarActivity
         // Add button listener
 
         //addListenerOnButtonClick();
-
+        StrictMode.enableDefaults(); //STRICT MODE ENABLED
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
@@ -79,14 +97,23 @@ public class MainActivity extends ActionBarActivity
 
     		
     	}
-
-    	
-        // update the main content by replacing fragments
-    	onSectionAttached(position + 1);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
-                .commit();
+//
+//    	if (position == 2)
+//        {
+//            MapFragment nMapFragment = MapFragment.newInstance();
+//            FragmentTransaction fragmentTransaction =
+//                    getFragmentManager().beginTransaction();
+//            fragmentTransaction.add(R.id.container, nMapFragment);
+//            fragmentTransaction.commit();
+//        }
+//        else {
+            // update the main content by replacing fragments
+            onSectionAttached(position + 1);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, objFragment)
+                    .commit();
+//        }
     }
     public void goPollenkaart(View view)
     {
@@ -102,39 +129,101 @@ public class MainActivity extends ActionBarActivity
         switchFragment(objFragment);
         mTitle ="Klachten melden";
         restoreActionBar();    }
+    public void klachtToDatabase()
+    {
+        String url = "http://149.210.186.51/setKlachten.php";
+        HttpClient client = new DefaultHttpClient();
+        HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
+        HttpPost httppost = new HttpPost(url);
+        try {
+            // Add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
+            nameValuePairs.add(new BasicNameValuePair("Id", "12132124"));
+            nameValuePairs.add((new BasicNameValuePair("Neus", bNeus)));
+            nameValuePairs.add((new BasicNameValuePair("Ogen", bOgen)));
+            nameValuePairs.add(new BasicNameValuePair("Keel", bKeel));
+            nameValuePairs.add(new BasicNameValuePair("Rating", rate));
+            nameValuePairs.add(new BasicNameValuePair("Opmerkingen", opmerking));
+            nameValuePairs.add(new BasicNameValuePair("Spray", bSpray));
+            nameValuePairs.add((new BasicNameValuePair("Pil", bPil)));
+            nameValuePairs.add((new BasicNameValuePair("Anders", bAnders)));
+            nameValuePairs.add(new BasicNameValuePair("Niets", bNiets));
 
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+            HttpResponse response = client.execute(httppost);
+
+
+
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     public void sendMessage(View view){
         //Do something in response to the button
         Fragment objFragment = new menu2B_Fragment();
         switchFragment(objFragment);
-        neus=(CheckBox)findViewById(R.id.checkBox3);
-        ogen=(CheckBox)findViewById(R.id.checkBox2);
-        keel=(CheckBox)findViewById(R.id.checkBox1);
-        gevoel = (RatingBar)findViewById(R.id.ratingBar);
+
+        CheckBox neus=(CheckBox)findViewById(R.id.checkBox3);
+        CheckBox ogen=(CheckBox)findViewById(R.id.checkBox2);
+        CheckBox keel=(CheckBox)findViewById(R.id.checkBox1);
+        RatingBar gevoel = (RatingBar)findViewById(R.id.ratingBar);
 
         StringBuilder result=new StringBuilder();
         result.append("Selected Items:");
-        result.append("\n" + getMessage() + "\n" + getRating());
+        setRating();
+        setMessage();
         if(keel.isChecked()){
-            result.append("\n keel");
+            bKeel = "1";
         }
         if(ogen.isChecked()){
-            result.append("\n Ogen");
+            bOgen = "1";
         }
         if(neus.isChecked()){
-            result.append("\n Neus");
+            bNeus = "1";
         }
         //Displaying the message on the toast
-        Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
         mTitle = "Medicijn melden";
         restoreActionBar();
     }
     public void verzendenKlachten(View view)
     {
+        Calendar c = Calendar.getInstance();
+        int dag = c.get(Calendar.DATE);
+        int maand = c.get(Calendar.MONTH);
+        maand += 1;
+        int jaar = c.get(Calendar.YEAR);
+        datum = String.valueOf(dag + "-" + maand + "-" + jaar);
+        CheckBox spray=(CheckBox)findViewById(R.id.checkBox);
+        CheckBox pil=(CheckBox)findViewById(R.id.checkBox4);
+        CheckBox anders=(CheckBox)findViewById(R.id.checkBox6);
+        CheckBox niets = (CheckBox)findViewById(R.id.checkBox5);
+
+        if(spray.isChecked())
+        {
+            bSpray = "1";
+        }
+        if(pil.isChecked())
+        {
+            bPil = "1";
+        }
+        if(anders.isChecked())
+        {
+            bAnders = "1";
+        }
+        if(niets.isChecked())
+        {
+            bNiets = "1";
+        }
+        klachtToDatabase();
         Fragment objFragment = new menu1_Fragment();
         switchFragment(objFragment);
         mTitle = "Home";
         restoreActionBar();
+        //Toast.makeText(getApplicationContext(), datum, Toast.LENGTH_LONG).show();
     }
     public void switchKlachten(View view)
     {
@@ -151,22 +240,22 @@ public class MainActivity extends ActionBarActivity
                 .commit();
 
     }
-    public String getRating()
+    public void setRating()
     {
         //Puts the value off the rating bar in a string
         RatingBar rating = (RatingBar) findViewById(R.id.ratingBar);
         String message = "";
         float theRating = rating.getRating();
         theRating *= 2;
-        message = Float.toString(theRating);
-        return message;
+        rate = Float.toString(theRating);
+
     }
-    public String getMessage()
+
+    public void setMessage()
     {
         //Puts the message from the input field in the string
         EditText editText = (EditText) findViewById(R.id.editTekst);
-        String message = editText.getText().toString();
-        return message;
+        opmerking = editText.getText().toString();
     }
 
 

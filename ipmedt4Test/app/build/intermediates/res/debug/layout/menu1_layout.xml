@@ -40,4 +40,4 @@
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
-<!-- From: file:/C:/Users/Giovsn/Desktop/ipmedt4Test/app/src/main/res/layout/menu1_layout.xml -->
+<!-- From: file:/C:/Users/mark/AndroidstudioProjects/ipmedt4Test/app/src/main/res/layout/menu1_layout.xml -->
