@@ -124,6 +124,58 @@ public class MainActivity extends ActionBarActivity
         restoreActionBar();
     }
 
+    public void setMedicijnenLayout()
+    {
+        if(bPil == "1")
+        {
+            CheckBox pil = (CheckBox) findViewById(R.id.checkBox4);
+            pil.setChecked(true);
+        }
+        if(bSpray == "1")
+        {
+            CheckBox spray=(CheckBox)findViewById(R.id.checkBox);
+            spray.setChecked(true);
+        }
+        if(bAnders == "1")
+        {
+            CheckBox anders=(CheckBox)findViewById(R.id.checkBox5);
+            anders.setChecked(true);
+        }
+        if(bNiets == "1")
+        {
+            CheckBox niets = (CheckBox)findViewById(R.id.checkBox6);
+            niets.setChecked(true);
+        }
+    }
+    public void setKlachtenLayout()
+    {
+       if(bNeus == "1")
+        {
+            CheckBox neus = (CheckBox) findViewById(R.id.checkBox3);
+            neus.setChecked(true);
+       }
+        if(bOgen == "1")
+        {
+            CheckBox ogen=(CheckBox)findViewById(R.id.checkBox2);
+            ogen.setChecked(true);
+        }
+        if(bKeel == "1")
+        {
+            CheckBox keel=(CheckBox)findViewById(R.id.checkBox1);
+            keel.setChecked(true);
+        }
+        if(rate != "0")
+        {
+            RatingBar gevoel = (RatingBar)findViewById(R.id.ratingBar);
+            Float rating = Float.parseFloat(rate);
+            rating /= 2;
+            gevoel.setRating(rating);
+        }
+        EditText opm = (EditText) findViewById(R.id.editTekst);
+        opm.setText(opmerking);
+
+    }
+
     public void goKlachtmelden (View view)
     {
         Fragment objFragment = new menu2_Fragment();
