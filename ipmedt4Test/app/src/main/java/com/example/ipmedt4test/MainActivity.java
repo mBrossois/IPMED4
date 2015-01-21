@@ -278,6 +278,8 @@ public class MainActivity extends ActionBarActivity
         switchFragment(objFragment);
         mTitle = "Home";
         restoreActionBar();
+	getData();
+
         //Toast.makeText(getApplicationContext(), datum, Toast.LENGTH_LONG).show();
     }
 
@@ -351,6 +353,7 @@ public class MainActivity extends ActionBarActivity
         switchFragment(objFragment);
         mTitle = "Home";
         restoreActionBar();
+ 	getData();
        // Toast.makeText(getApplicationContext(), datum, Toast.LENGTH_LONG).show();
     }
 
@@ -372,6 +375,7 @@ public class MainActivity extends ActionBarActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, objFragment)
                 .commit();
+	fragmentManager.executePendingTransactions()
 
     }
     public void setRating()
@@ -431,6 +435,7 @@ public class MainActivity extends ActionBarActivity
             // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.main, menu);
             restoreActionBar();
+	    getData();
             return true;
         }
         return super.onCreateOptionsMenu(menu);
@@ -486,6 +491,130 @@ public class MainActivity extends ActionBarActivity
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+    }
+    public void getData(){
+        String result = "";
+        int teller = 0;
+        InputStream isr = null;
+        try{
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://149.210.186.51/getKlachten.php"); //YOUR PHP SCRIPT ADDRESS
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            isr = entity.getContent();
+        }
+        catch(Exception e){
+            Log.e("log_tag", "Error in http connection " + e.toString());
+            infotext =("Couldnt connect to database");
+        }
+        //convert response to string
+        try{
+            BufferedReader reader = new BufferedReader(new InputStreamReader(isr,"iso-8859-1"),8);
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+            isr.close();
+
+            result=sb.toString();
+        }
+        catch(Exception e){
+            Log.e("log_tag", "Error  converting result "+e.toString());
+        }
+
+        //parse json data
+        try {
+            String s = "";
+            neus1 = 0;
+            ogen = 0;
+            keel = 0;
+            JSONArray jArray = new JSONArray(result);
+            Boolean ho = false;
+            Calendar c = Calendar.getInstance();
+            int dag = c.get(Calendar.DATE);
+            int maand = c.get(Calendar.MONTH);
+            maand += 1;
+            int jaar = c.get(Calendar.YEAR);
+            if(maand < 10) {
+                datum = String.valueOf(jaar + "-0" + maand + "-" + dag);
+            }
+            else
+            {
+                datum = String.valueOf(jaar + "-" + maand + "-" + dag);
+            }
+            for(int i=0; i<jArray.length();i++) {
+                JSONObject json = jArray.getJSONObject(i);
+                ho = json.getString("Datum").equals(datum);
+                if(json.getString("Datum").equals(datum) ) {
+                    if (json.getString("Ogen").equals( "1")) {
+                        ogen += 1;
+                    }
+                    if (json.getString("Neus").equals( "1")) {
+                        neus1 += 1;
+                    }
+                    if (json.getString("Keel").equals( "1")) {
+                        keel += 1;
+                    }
+                    rating += Integer.parseInt(json.getString("Rating"));
+                    teller++;
+                }
+
+            }
+
+            rating = rating / teller;
+            String infoBegin = "";
+            if(teller <= 5)
+            {
+                infoBegin = "Er zijn weinig pollen.";
+            }
+            else if(teller > 10 && teller <=20)
+            {
+                infoBegin = "Er zijn midel matig veel ";
+            }
+            else
+            {
+                infoBegin = "Er zijn veel Pollen";
+            }
+
+            if (keel > neus1 && keel > ogen)
+            {
+                infotext =("last van hun keel");
+            }
+            else if(neus1 > keel && neus1 > ogen)
+            {
+                infotext = "last van hun neus";
+            }
+            else if(ogen > keel && ogen > neus1)
+            {
+                infotext = "last van hun ogen.";
+            }
+            else if(ogen == keel && ogen == neus1)
+            {
+                infotext = "even veel last";
+            }
+            else if(ogen == neus1)
+            {
+                infotext = "last van ogen en neus";
+            }
+            else if(ogen == keel)
+            {
+                infotext = "last van ogen en keel";
+            }
+            else if(keel == neus1)
+            {
+                infotext = "last van keel en neus";
+            }
+
+            TextView hometext = (TextView)findViewById(R.id.textSwag);
+            hometext.setText(infoBegin + ""+ System.getProperty("line.separator")+"" + infotext);
+
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            Log.e("log_tag", "Error Parsing Data "+e.toString());
+        }
+
     }
 
 }
