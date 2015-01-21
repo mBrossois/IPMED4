@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal" >
+    android:gravity="center_horizontal"
+
+    android:id="@+id/layout2">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,9 +23,8 @@
         android:text="Neus"
         android:checked="false"
         android:layout_gravity="left"
+        android:layout_alignLeft="@+id/textView2"
         android:layout_below="@+id/textView2"
-        android:layout_alignRight="@+id/checkBox2"
-        android:layout_alignEnd="@+id/checkBox2"
         android:layout_marginTop="31dp" />
 
     <CheckBox
@@ -31,10 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ogen"
-        android:layout_above="@+id/checkBox1"
-        android:layout_alignLeft="@+id/checkBox1"
-        android:layout_alignStart="@+id/checkBox1"
-        android:layout_marginBottom="32dp" />
+        android:layout_below="@+id/checkBox3"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp" />
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -42,6 +43,8 @@
         android:layout_height="wrap_content"
         android:text="Keel"
         android:checked="false"
+        android:layout_below="@+id/checkBox2"
+        android:layout_marginTop="20dp"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2" />
@@ -72,7 +75,7 @@
         android:layout_below="@+id/ratingBar"
         android:layout_alignLeft="@+id/ratingBar"
         android:layout_alignStart="@+id/ratingBar"
-        android:text="Opmerkingen"
+        android:hint="Opmerkingen"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2" />
 
@@ -90,12 +93,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
         android:onClick="sendMessage"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignRight="@+id/ratingBar"
-        android:layout_alignEnd="@+id/ratingBar"
         android:background="@drawable/next_icon"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_toRightOf="@+id/editTekst"
-        android:layout_toEndOf="@+id/editTekst" />
+        android:minWidth="50dp"
+        android:minHeight="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="-40dp"
+        android:layout_marginBottom="20dp"
+        />
 
 </RelativeLayout>
