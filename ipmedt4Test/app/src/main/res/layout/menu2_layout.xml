@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+
     android:id="@+id/layout2">
 
     <TextView
@@ -74,7 +75,7 @@
         android:layout_below="@+id/ratingBar"
         android:layout_alignLeft="@+id/ratingBar"
         android:layout_alignStart="@+id/ratingBar"
-        android:text="Opmerkingen"
+        android:hint="Opmerkingen"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2" />
 

@@ -1719,7 +1719,7 @@ containing a value of this type.
         public static final int book_now=0x7f09002b;
         public static final int button=0x7f090059;
         public static final int button2=0x7f09005a;
-        public static final int button3=0x7f090070;
+        public static final int button3=0x7f090071;
         public static final int buyButton=0x7f090028;
         public static final int buy_now=0x7f09002c;
         public static final int buy_with_google=0x7f09002d;
@@ -1742,9 +1742,9 @@ containing a value of this type.
         public static final int drawer_layout=0x7f090053;
         public static final int dropdown=0x7f090021;
         public static final int editTekst=0x7f090064;
-        public static final int editText=0x7f09006d;
-        public static final int editText2=0x7f09006e;
-        public static final int editText3=0x7f09006f;
+        public static final int editText=0x7f09006e;
+        public static final int editText2=0x7f09006f;
+        public static final int editText3=0x7f090070;
         public static final int edit_query=0x7f090047;
         public static final int end=0x7f090014;
         public static final int expand_activities_button=0x7f090036;
@@ -1761,10 +1761,11 @@ containing a value of this type.
         public static final int imageButton=0x7f090066;
         public static final int imageButton2=0x7f09006c;
         public static final int imageView=0x7f090056;
-        public static final int imageView1=0x7f090071;
+        public static final int imageView1=0x7f090072;
         public static final int layout2=0x7f09005d;
         public static final int listMode=0x7f090009;
         public static final int list_item=0x7f090039;
+        public static final int map=0x7f09006d;
         public static final int match_parent=0x7f09002a;
         public static final int middle=0x7f090015;
         public static final int monochrome=0x7f090031;
@@ -1807,8 +1808,8 @@ containing a value of this type.
         public static final int textView3=0x7f090065;
         public static final int textView4=0x7f090067;
         public static final int textView5=0x7f09006b;
-        public static final int text_id=0x7f090073;
-        public static final int text_id1=0x7f090072;
+        public static final int text_id=0x7f090074;
+        public static final int text_id1=0x7f090073;
         public static final int title=0x7f09003b;
         public static final int up=0x7f090008;
         public static final int useLogo=0x7f090012;
