@@ -10,8 +10,9 @@
     <string name="action_settings">Settings</string>
     <string name="title_section4">Persoons gegevens</string>
     <string name="title_section5">Informatie</string>
-        <string name="info"><b>Bedankt voor het gebruiken van deze app!
-        Samen gaan we de strijd tegen pollenallergien aan.</b></string>
+    <string name="info"><b>Welkom, bij Pollenchecker!</b></string>
+    <string name="samen"><b>Samen strijden we tegen pollenallergien.</b></string>
+
     <string name="tekst">
         Deze app is tot stand gekomen door een samenwerking van Hogeschool Leiden en Generade.
         Generade ontwikkelt nieuwe kennis en technologie op het gebied van genomics.
