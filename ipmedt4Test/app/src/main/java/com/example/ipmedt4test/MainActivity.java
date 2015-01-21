@@ -195,7 +195,9 @@ public class MainActivity extends ActionBarActivity
         if(rate != "0")
         {
             RatingBar gevoel = (RatingBar)findViewById(R.id.ratingBar);
-            gevoel.setRating(Float.parseFloat(rate));
+            Float rating = Float.parseFloat(rate);
+            rating /= 2;
+            gevoel.setRating(rating);
         }
         EditText opm = (EditText) findViewById(R.id.editTekst);
         opm.setText(opmerking);
