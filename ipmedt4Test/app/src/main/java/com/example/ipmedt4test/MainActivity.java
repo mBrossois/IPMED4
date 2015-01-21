@@ -2,7 +2,6 @@ package com.example.ipmedt4test;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -20,16 +19,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.RatingBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+//import com.google.android.gms.maps.MapFragment;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -49,9 +43,8 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-    String bNeus = "0", bKeel = "0", bOgen = "0", bSpray = "0", bPil = "0", bNiets =  "0", bAnders = "0", rate ="0", datum = "", opmerking = "";
-    CheckBox neus;
-    private GoogleMap mMap;
+    String bNeus = "0", bKeel = "0", bOgen = "0", bSpray = "0", bPil = "0", bNiets =  "0", bAnders = "0", rate, datum = "", opmerking = "";
+    String pNaam = "", pGebDatum="", pEmail ="", pVrouw ="0", pMan="0";
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -80,43 +73,22 @@ public class MainActivity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setUpMapIfNeeded();
-    }
-    private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-            //mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                    //.getMap();
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-               // setUpMap();
-            }
-        }
-    }
-    private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
-    }
+
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-
+    	
     	Fragment objFragment = null;
-
+    	
     	switch (position){
     	case 0:
     		objFragment = new menu1_Fragment();
     		break;
     	case 1:
     		objFragment = new menu2_Fragment();
-            //setKlachtenLayout();
     		break;
     	case 2:
     		objFragment = new menu3_Fragment();
-         //   setUpMapIfNeeded();
-    		break;
+    		break; 
     	case 3:
     		objFragment = new menu4_Fragment();
     		break;
@@ -124,7 +96,7 @@ public class MainActivity extends ActionBarActivity
     		objFragment = new menu5_Fragment();
     		break;
 
-
+    		
     	}
 //
 //    	if (position == 2)
@@ -147,59 +119,9 @@ public class MainActivity extends ActionBarActivity
     public void goPollenkaart(View view)
     {
         Fragment objFragment = new menu3_Fragment();
-       // setUpMapIfNeeded();
         switchFragment(objFragment);
         mTitle ="Pollenkaart";
         restoreActionBar();
-    }
-    public void setMedicijnenLayout()
-    {
-        if(bPil == "1")
-        {
-            CheckBox pil = (CheckBox) findViewById(R.id.checkBox4);
-            pil.setChecked(true);
-        }
-        if(bSpray == "1")
-        {
-            CheckBox spray=(CheckBox)findViewById(R.id.checkBox);
-            spray.setChecked(true);
-        }
-        if(bAnders == "1")
-        {
-            CheckBox anders=(CheckBox)findViewById(R.id.checkBox5);
-            anders.setChecked(true);
-        }
-        if(bNiets == "1")
-        {
-            CheckBox niets = (CheckBox)findViewById(R.id.checkBox6);
-            niets.setChecked(true);
-        }
-    }
-    public void setKlachtenLayout()
-    {
-       if(bNeus == "1")
-        {
-            CheckBox neus = (CheckBox) findViewById(R.id.checkBox3);
-            neus.setChecked(true);
-       }
-        if(bOgen == "1")
-        {
-            CheckBox ogen=(CheckBox)findViewById(R.id.checkBox2);
-            ogen.setChecked(true);
-        }
-        if(bKeel == "1")
-        {
-            CheckBox keel=(CheckBox)findViewById(R.id.checkBox1);
-            keel.setChecked(true);
-        }
-        if(rate != "0")
-        {
-            RatingBar gevoel = (RatingBar)findViewById(R.id.ratingBar);
-            gevoel.setRating(Float.parseFloat(rate));
-        }
-        EditText opm = (EditText) findViewById(R.id.editTekst);
-        opm.setText(opmerking);
-
     }
 
     public void goKlachtmelden (View view)
@@ -207,9 +129,8 @@ public class MainActivity extends ActionBarActivity
         Fragment objFragment = new menu2_Fragment();
         switchFragment(objFragment);
         mTitle ="Klachten melden";
-        restoreActionBar();
-        //setKlachtenLayout();
-    }
+        restoreActionBar();    }
+
     public void klachtToDatabase()
     {
         String url = "http://149.210.186.51/setKlachten.php";
@@ -244,9 +165,10 @@ public class MainActivity extends ActionBarActivity
     }
     public void sendMessage(View view){
         //Do something in response to the button
+        Fragment objFragment = new menu2B_Fragment();
+        switchFragment(objFragment);
 
-
-        neus=(CheckBox)findViewById(R.id.checkBox3);
+        CheckBox neus=(CheckBox)findViewById(R.id.checkBox3);
         CheckBox ogen=(CheckBox)findViewById(R.id.checkBox2);
         CheckBox keel=(CheckBox)findViewById(R.id.checkBox1);
         RatingBar gevoel = (RatingBar)findViewById(R.id.ratingBar);
@@ -258,39 +180,25 @@ public class MainActivity extends ActionBarActivity
         if(keel.isChecked()){
             bKeel = "1";
         }
-        else
-        {
-            bKeel = "0";
-        }
         if(ogen.isChecked()){
             bOgen = "1";
-        }
-        else
-        {
-            bOgen = "0";
         }
         if(neus.isChecked()){
             bNeus = "1";
         }
-        else
-        {
-            bNeus="0";
-        }
         //Displaying the message on the toast
         //Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
-        Fragment objFragment = new menu2B_Fragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
-                .commit();
-        fragmentManager.executePendingTransactions();
-        //setContentView(R.layout.menu2b_layout);
         mTitle = "Medicijn melden";
         restoreActionBar();
-        setMedicijnenLayout();
     }
     public void verzendenKlachten(View view)
     {
+        Calendar c = Calendar.getInstance();
+        int dag = c.get(Calendar.DATE);
+        int maand = c.get(Calendar.MONTH);
+        maand += 1;
+        int jaar = c.get(Calendar.YEAR);
+        datum = String.valueOf(dag + "-" + maand + "-" + jaar);
         CheckBox spray=(CheckBox)findViewById(R.id.checkBox);
         CheckBox pil=(CheckBox)findViewById(R.id.checkBox4);
         CheckBox anders=(CheckBox)findViewById(R.id.checkBox6);
@@ -300,91 +208,111 @@ public class MainActivity extends ActionBarActivity
         {
             bSpray = "1";
         }
-        else
-        {
-            bSpray = "0";
-        }
         if(pil.isChecked())
         {
             bPil = "1";
-        }
-        else
-        {
-            bPil = "0";
         }
         if(anders.isChecked())
         {
             bAnders = "1";
         }
-        else
-        {
-            bAnders = "0";
-        }
         if(niets.isChecked())
         {
             bNiets = "1";
         }
-        else
-        {
-            bNiets = "0";
-        }
         klachtToDatabase();
+
         Fragment objFragment = new menu1_Fragment();
         switchFragment(objFragment);
         mTitle = "Home";
         restoreActionBar();
-        Toast.makeText(getApplicationContext(), "Verzonden!", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), datum, Toast.LENGTH_LONG).show();
     }
+
+    public void PersGegevensToDatabase()
+    {
+        String url = "http://149.210.186.51/setPersGegevens.php";
+        HttpClient client = new DefaultHttpClient();
+        HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
+        HttpPost httppost = new HttpPost(url);
+        try {
+            // Add your data
+            List<NameValuePair> nameValuePairs2 = new ArrayList<NameValuePair>(4);
+            nameValuePairs2.add(new BasicNameValuePair("Naam", pNaam));
+            nameValuePairs2.add((new BasicNameValuePair("Geboortedatum", pGebDatum)));
+            nameValuePairs2.add((new BasicNameValuePair("Email", pEmail)));
+            nameValuePairs2.add((new BasicNameValuePair("Vrouw", pVrouw)));
+            nameValuePairs2.add((new BasicNameValuePair("Man", pMan)));
+
+
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs2));
+
+            HttpResponse response = client.execute(httppost);
+
+
+
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    public void verzendenGegevens(View view)
+    {
+        /*Calendar c = Calendar.getInstance();
+        int dag = c.get(Calendar.DATE);
+        int maand = c.get(Calendar.MONTH);
+        maand += 1;
+        int jaar = c.get(Calendar.YEAR);
+        datum = String.valueOf(dag + "-" + maand + "-" + jaar);*/
+        EditText naam=(EditText)findViewById(R.id.Naam);
+        EditText gebdatum=(EditText)findViewById(R.id.GebDatum);
+        EditText email=(EditText)findViewById(R.id.Email);
+        pNaam = naam.getText().toString();
+        pGebDatum = gebdatum.getText().toString();
+        pEmail = email.getText().toString();
+        RadioButton vrouw=(RadioButton)findViewById(R.id.Vrouw);
+        RadioButton man=(RadioButton)findViewById(R.id.Man);
+
+
+
+        if(vrouw.isChecked())
+        {
+            pVrouw = "1";
+        }
+        else
+        {
+            pVrouw = "0";
+        }
+        if(man.isChecked())
+        {
+            pMan = "1";
+        }
+        else
+        {
+            pMan = "0";
+        }
+
+        PersGegevensToDatabase();
+
+        Fragment objFragment = new menu1_Fragment();
+        switchFragment(objFragment);
+        mTitle = "Home";
+        restoreActionBar();
+       // Toast.makeText(getApplicationContext(), datum, Toast.LENGTH_LONG).show();
+    }
+
+
+
+
+
+
     public void switchKlachten(View view)
     {
-        CheckBox spray=(CheckBox)findViewById(R.id.checkBox);
-        CheckBox pil=(CheckBox)findViewById(R.id.checkBox4);
-        CheckBox anders=(CheckBox)findViewById(R.id.checkBox6);
-        CheckBox niets = (CheckBox)findViewById(R.id.checkBox5);
-
-        if(spray.isChecked())
-        {
-            bSpray = "1";
-        }
-        else
-        {
-            bSpray = "0";
-        }
-        if(pil.isChecked())
-        {
-            bPil = "1";
-        }
-        else
-        {
-            bPil = "0";
-        }
-        if(anders.isChecked())
-        {
-            bAnders = "1";
-        }
-        else
-        {
-            bAnders = "0";
-        }
-        if(niets.isChecked())
-        {
-            bNiets = "1";
-        }
-        else
-        {
-            bNiets = "0";
-        }
         Fragment objFragment = new menu2_Fragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
-                .commit();
-        fragmentManager.executePendingTransactions();
-       // setContentView(R.layout.menu2_layout);
-       // View rootview = (View) findViewById(R.id.layout2);
+        switchFragment(objFragment);
         mTitle = "Klachten melden";
         restoreActionBar();
-        setKlachtenLayout();
     }
     public void switchFragment(Fragment objFragment)
     {

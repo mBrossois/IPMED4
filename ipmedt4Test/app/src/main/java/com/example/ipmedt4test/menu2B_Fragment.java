@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by mark on 12/01/2015.
+ * Created by mark, giovanni en angeline on 12/01/2015.
  */
 public class menu2B_Fragment extends Fragment {
     View rootview;
