@@ -663,7 +663,7 @@ public class MainActivity extends ActionBarActivity
             String infoBegin = "";
             if(teller <= 5)
             {
-                infoBegin = "Er zijn weinig pollen.";
+                infoBegin = "Er zijn weinig pollen";
             }
             else if(teller > 10 && teller <=20)
             {
@@ -688,23 +688,23 @@ public class MainActivity extends ActionBarActivity
             }
             else if(ogen == keel && ogen == neus1)
             {
-                infotext = "even veel last";
+                infotext = "overal even veel last van";
             }
             else if(ogen == neus1)
             {
-                infotext = "last van ogen en neus";
+                infotext = "last van hun ogen en neus";
             }
             else if(ogen == keel)
             {
-                infotext = "last van ogen en keel";
+                infotext = "last van hun ogen en keel";
             }
             else if(keel == neus1)
             {
-                infotext = "last van keel en neus";
+                infotext = "last van hun keel en neus";
             }
 
             TextView hometext = (TextView)findViewById(R.id.textSwag);
-            hometext.setText(infoBegin + ""+ System.getProperty("line.separator")+"" + infotext);
+            hometext.setText(infoBegin + " in de lucht."+ System.getProperty("line.separator")+"Mensen hebben " + infotext + ".");
 
 
         } catch (Exception e) {
