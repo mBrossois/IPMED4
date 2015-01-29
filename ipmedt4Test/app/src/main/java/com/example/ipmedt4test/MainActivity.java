@@ -108,11 +108,13 @@ public class MainActivity extends ActionBarActivity
         }
     }
     private void setUpMap() {
+        //Add a marker to the map
         mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
     }
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-
+        //The fragments shall be switched if something is selected in
+        // the navbar
     	Fragment objFragment = null;
 
     	switch (position){
@@ -155,6 +157,7 @@ public class MainActivity extends ActionBarActivity
     }
     public void goPollenkaart(View view)
     {
+        //This will switch the fragment to menu3_layout
         Fragment objFragment = new menu3_Fragment();
        // setUpMapIfNeeded();
         switchFragment(objFragment);
@@ -163,6 +166,8 @@ public class MainActivity extends ActionBarActivity
     }
     public void setMedicijnenLayout()
     {
+        //This checks the values off the checkboxes and edittext from menu2b_layout
+        //and will change it if needed
         if(bPil == "1")
         {
             CheckBox pil = (CheckBox) findViewById(R.id.checkBox4);
@@ -186,6 +191,8 @@ public class MainActivity extends ActionBarActivity
     }
     public void setKlachtenLayout()
     {
+        //This checks the values off the checkboxes and edittext from menu2_layout
+        //and will change it if needed
        if(bNeus == "1")
         {
             CheckBox neus = (CheckBox) findViewById(R.id.checkBox3);
@@ -214,6 +221,7 @@ public class MainActivity extends ActionBarActivity
     }
     public void PersGegevensToDatabase()
     {
+        //This will send the values of menu5_layout to the database
         String url = "http://149.210.186.51/setPersGegevens.php";
         HttpClient client = new DefaultHttpClient();
         HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
@@ -242,6 +250,8 @@ public class MainActivity extends ActionBarActivity
     }
     public void verzendenGegevens(View view)
     {
+        //This will get the values off menu4_layout and send it to the database
+        //afterwards the fragment will be switched to menu1_layout
         /*Calendar c = Calendar.getInstance();
         int dag = c.get(Calendar.DATE);
         int maand = c.get(Calendar.MONTH);
@@ -288,6 +298,7 @@ public class MainActivity extends ActionBarActivity
 
     public void goKlachtmelden (View view)
     {
+        //Fragmetn will be switched to menu2_fragment
         Fragment objFragment = new menu2_Fragment();
         switchFragment(objFragment);
         mTitle ="Klachten melden";
@@ -296,6 +307,7 @@ public class MainActivity extends ActionBarActivity
     }
     public void klachtToDatabase()
     {
+        //Will send the klachten and medicijnen to the database.
         String url = "http://149.210.186.51/setKlachten.php";
         HttpClient client = new DefaultHttpClient();
         HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
@@ -326,10 +338,11 @@ public class MainActivity extends ActionBarActivity
             e.printStackTrace();
         }
     }
-    public void sendMessage(View view){
+    public void switchMedicijnen(View view){
         //Do something in response to the button
 
-
+        //Gets the values of this View and saves this locally
+        //than the fragment will be switchted to menu2b_layout
         neus=(CheckBox)findViewById(R.id.checkBox3);
         CheckBox ogen=(CheckBox)findViewById(R.id.checkBox2);
         CheckBox keel=(CheckBox)findViewById(R.id.checkBox1);
@@ -371,6 +384,8 @@ public class MainActivity extends ActionBarActivity
     }
     public void verzendenKlachten(View view)
     {
+        //Gets the values of this view and send it to the database
+        //afterwards the fragmenst will be switched to menu1_layout
         CheckBox spray=(CheckBox)findViewById(R.id.checkBox);
         CheckBox pil=(CheckBox)findViewById(R.id.checkBox4);
         CheckBox anders=(CheckBox)findViewById(R.id.checkBox6);
@@ -422,6 +437,8 @@ public class MainActivity extends ActionBarActivity
     }
     public void switchKlachten(View view)
     {
+        //Gets the data from the current view saves is locally
+        //and switches to menu2_layout
         CheckBox spray=(CheckBox)findViewById(R.id.checkBox);
         CheckBox pil=(CheckBox)findViewById(R.id.checkBox4);
         CheckBox anders=(CheckBox)findViewById(R.id.checkBox6);
@@ -469,6 +486,7 @@ public class MainActivity extends ActionBarActivity
     }
     public void switchFragment(Fragment objFragment)
     {
+        //Switch between fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, objFragment)
@@ -589,6 +607,7 @@ public class MainActivity extends ActionBarActivity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
+    //This method is used to get the data from the database.
     public void getData(){
         String result = "";
         int teller = 0;

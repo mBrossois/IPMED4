@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
-        android:onClick="sendMessage"
+        android:onClick="switchMedicijnen"
         android:background="@drawable/next_icon"
         android:minWidth="50dp"
         android:minHeight="50dp"
