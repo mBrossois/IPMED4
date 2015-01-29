@@ -1,31 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:id="@+id/home">
-
-
-    <fragment
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
     android:id="@+id/map"
-    android:name="com.google.android.gms.maps.MapFragment"
-        android:layout_below="@+id/mapTekst"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:id="@+id/mapTekst"
-        android:layout_height="wrap_content"
-        android:hint="Vul adres in."
-        android:layout_marginLeft="153dp"
-        android:layout_marginStart="153dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-
-</RelativeLayout>
+    tools:context=".MapsActivity"
+    android:name="com.google.android.gms.maps.SupportMapFragment" />

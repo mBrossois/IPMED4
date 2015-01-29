@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.maps.SupportMapFragment;
-
 public class menu3_Fragment extends Fragment {
 	View rootview;
 	@Nullable
@@ -17,5 +15,4 @@ public class menu3_Fragment extends Fragment {
 		rootview = inflater.inflate(R.layout.menu3_layout,container,false);
 		return rootview;
 	}
-
 }

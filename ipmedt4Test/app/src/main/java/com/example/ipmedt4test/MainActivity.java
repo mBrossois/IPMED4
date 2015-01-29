@@ -4,13 +4,9 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -33,7 +29,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -61,15 +56,12 @@ import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity
-        implements OnMapReadyCallback,NavigationDrawerFragment.NavigationDrawerCallbacks, LocationListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     String bNeus = "0", infotext, bKeel = "0", bOgen = "0", bSpray = "0", bPil = "0", bNiets =  "0", bAnders = "0", rate ="0", datum = "", opmerking = "";
     CheckBox neus;
     String pNaam = "", pGebDatum="", pEmail ="", pVrouw ="0", pMan="0";
     int neus1 = 0, ogen = 0, keel = 0, rating = 0;
-    double latitude = 0, longitude = 0;
-    private MapsActivity mapsA;
-    private View rview;
-    private LocationManager locationManager;
+    private GoogleMap mMap;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -89,73 +81,39 @@ public class MainActivity extends ActionBarActivity
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
+        // Add button listener
+
         //addListenerOnButtonClick();
         StrictMode.enableDefaults(); //STRICT MODE ENABLED
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
-//        mapsA = new MapsActivity();
-//        rview = (View)findViewById(R.id.map);
     }
     @Override
-    public void onLocationChanged(Location location) {
-        // TODO Auto-generated method stub
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
-        String str = "Latitude: "+location.getLatitude()+" Longitude: "+location.getLongitude();
-
-        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
-
+    protected void onResume() {
+        super.onResume();
+        setUpMapIfNeeded();
     }
-
-    @Override
-    public void onProviderDisabled(String arg0) {
-        // TODO Auto-generated method stub
-
+    private void setUpMapIfNeeded() {
+        // Do a null check to confirm that we have not already instantiated the map.
+        if (mMap == null) {
+            // Try to obtain the map from the SupportMapFragment.
+            //mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                    //.getMap();
+            // Check if we were successful in obtaining the map.
+            if (mMap != null) {
+               // setUpMap();
+            }
+        }
     }
-
-    @Override
-    public void onProviderEnabled(String arg0) {
-        // TODO Auto-generated method stub
-
+    private void setUpMap() {
+        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
     }
-
-    @Override
-    public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
-        // TODO Auto-generated method stub
-
-    }
-//    protected void onResume() {
-//        super.onResume();
-//        setUpMapIfNeeded();
-//    }
-//    private void setUpMapIfNeeded() {
-//        // Do a null check to confirm that we have not already instantiated the map.
-//        if (mMap == null) {
-//            // Try to obtain the map from the SupportMapFragment.
-////            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-////                    .getMap();
-//            // Check if we were successful in obtaining the map.
-//            if (mMap != null) {
-//               setUpMap();
-//            }
-//        }
-////    }
-    public void onMapReady(GoogleMap map) {
-        map.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Marker"));
-    }
-//    private void setUpMap() {
-//        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
-//    }
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
     	Fragment objFragment = null;
-        MapFragment nMapFragment = null;
 
     	switch (position){
     	case 0:
@@ -166,6 +124,7 @@ public class MainActivity extends ActionBarActivity
     		break;
     	case 2:
     		objFragment = new menu3_Fragment();
+         //   setUpMapIfNeeded();
     		break;
     	case 3:
     		objFragment = new menu4_Fragment();
@@ -176,60 +135,31 @@ public class MainActivity extends ActionBarActivity
 
 
     	}
-
-    	if (position == 2)
-        {
-            onSectionAttached(position + 1);
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, objFragment)
-                    .commit();
-            fragmentManager.executePendingTransactions();
-
-//            MapFragment mapFragment = (MapFragment) getFragmentManager()
-//                    .findFragmentById(R.id.map);
-//            mapFragment.getMapAsync(this);
-//            //setUpMap();
-        }
-        else {
+//
+//    	if (position == 2)
+//        {
+//            MapFragment nMapFragment = MapFragment.newInstance();
+//            FragmentTransaction fragmentTransaction =
+//                    getFragmentManager().beginTransaction();
+//            fragmentTransaction.add(R.id.container, nMapFragment);
+//            fragmentTransaction.commit();
+//        }
+//        else {
             // update the main content by replacing fragments
             onSectionAttached(position + 1);
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.container, objFragment)
                     .commit();
-      }
+//        }
     }
     public void goPollenkaart(View view)
     {
-       // setContentView(R.layout.menu3_layout);
         Fragment objFragment = new menu3_Fragment();
        // setUpMapIfNeeded();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment, "map")
-                .commit();
-        fragmentManager.executePendingTransactions();
-        //switchFragment(objFragment);
+        switchFragment(objFragment);
         mTitle ="Pollenkaart";
-
-        FragmentManager fm = mNavigationDrawerFragment.getChildFragmentManager();
-        SupportMapFragment mapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map);
-//        mapsA = new MapsActivity();
-//        mapsA.onResume();        getWindow().getDecorView().findViewById(R.id.map);
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        Fragment fragment = (Fragment)getSupportFragmentManager().findFragmentById(R.id.map);
-//        MapFragment mapFragment = (MapFragment)findViewById(R.id.map);
-        SupportMapFragment map1Fragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        SupportMapFragment map2Fragment = (SupportMapFragment) mNavigationDrawerFragment.getFragmentManager()
-                .findFragmentById(R.id.map);
-       // mapFragment.getMapAsync(this);
-        String txt = "";
-//        onMapReady(mapFragment);
-
-
-       // onMapReady(mMap);
+        restoreActionBar();
     }
     public void setMedicijnenLayout()
     {
@@ -733,48 +663,48 @@ public class MainActivity extends ActionBarActivity
             String infoBegin = "";
             if(teller <= 5)
             {
-                infoBegin = "Er zitten weinig pollen in de lucht.";
+                infoBegin = "Er zijn weinig pollen";
             }
-            else if(teller > 5 && teller <=10)
+            else if(teller > 10 && teller <=20)
             {
-                infoBegin = "Er zitten redelijk veel pollen in de lucht ";
+                infoBegin = "Er zijn midel matig veel ";
             }
             else
             {
-                infoBegin = "Er zitten veel pollen in de lucht";
+                infoBegin = "Er zijn veel Pollen";
             }
 
             if (keel > neus1 && keel > ogen)
             {
-                infotext =("mensen hebben last van hun keel");
+                infotext =("last van hun keel");
             }
             else if(neus1 > keel && neus1 > ogen)
             {
-                infotext = "mensen hebben last van hun neus";
+                infotext = "last van hun neus";
             }
             else if(ogen > keel && ogen > neus1)
             {
-                infotext = "mensen hebben last van hun ogen.";
+                infotext = "last van hun ogen.";
             }
             else if(ogen == keel && ogen == neus1)
             {
-                infotext = "mensen hebben overal evenveel last van";
+                infotext = "overal even veel last van";
             }
             else if(ogen == neus1)
             {
-                infotext = "mensen hebben last van hun ogen en neus";
+                infotext = "last van hun ogen en neus";
             }
             else if(ogen == keel)
             {
-                infotext = "mensen hebben last van hun ogen en keel";
+                infotext = "last van hun ogen en keel";
             }
             else if(keel == neus1)
             {
-                infotext = "mensen hebben last van hun keel en neus";
+                infotext = "last van hun keel en neus";
             }
 
             TextView hometext = (TextView)findViewById(R.id.textSwag);
-            hometext.setText(infoBegin + ""+ System.getProperty("line.separator")+"" + infotext);
+            hometext.setText(infoBegin + " in de lucht."+ System.getProperty("line.separator")+"Mensen hebben " + infotext + ".");
 
 
         } catch (Exception e) {
